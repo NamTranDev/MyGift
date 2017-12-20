@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <namtran.mygift.fireworks.view.FireworkComponent
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/firework"/>
+
+    <namtran.mygift.htext.rainbow.RainbowTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:id="@+id/text_display"
+        android:textColor="@android:color/white"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="100dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/iv"
+        android:visibility="gone"
+        android:layout_below="@+id/text_display"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/m"/>
+</RelativeLayout>
