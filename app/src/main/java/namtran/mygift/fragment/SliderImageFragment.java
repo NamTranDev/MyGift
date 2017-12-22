@@ -100,7 +100,7 @@ public class SliderImageFragment extends Fragment implements ViewPagerEx.OnPageC
         backgroundSnow.queueEvent(new Runnable() {
             @Override
             public void run() {
-                backgroundSnow.setParticleSystem(new ParticleLayer(getActivity(),R.raw.rain,R.drawable.rain_texture));
+                backgroundSnow.setParticleSystem(new ParticleLayer(getActivity(),R.raw.snow,R.drawable.particle_texture));
             }
         });
     }

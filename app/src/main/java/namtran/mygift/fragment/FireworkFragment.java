@@ -36,13 +36,12 @@ import namtran.mygift.fireworks.view.FireworkComponent;
 import namtran.mygift.fireworks.view.InvalidateThread;
 import namtran.mygift.htext.rainbow.RainbowTextView;
 
-public class FireworkFragment extends Fragment {
+public class FireworkFragment extends Fragment implements Animator.AnimatorListener {
 
     private RainbowTextView tv_display;
     private FireworkComponent firework;
     private ImageView iv;
     private Random random;
-    private int heightIv = -1;
     private ArrayList<Class<? extends Explosion>> explosionTypes;
     private int position = 0;
     String textDisplay = "";
@@ -72,16 +71,11 @@ public class FireworkFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ViewTreeObserver observer = iv.getViewTreeObserver();
-        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                heightIv = iv.getHeight();
-            }
-        });
         random = new Random();
         createExplosionList();
         InvalidateThread invalidate = new InvalidateThread(firework);
         invalidate.start();
+        showFirework();
         textDisplay+=text[position];
         animationText();
         if (getActivity() != null && getActivity() instanceof MainActivity){
@@ -174,6 +168,7 @@ public class FireworkFragment extends Fragment {
         AnimatorSet animatorSet = new AnimatorSet();
 
         animatorSet.play(mover).with(fadeIn).after(fadeOut);
+        animatorSet.addListener(this);
         animatorSet.start();
     }
 
@@ -197,5 +192,27 @@ public class FireworkFragment extends Fragment {
 
     public static int getScreenHeight() {
         return Resources.getSystem().getDisplayMetrics().heightPixels;
+    }
+
+    @Override
+    public void onAnimationStart(Animator animation) {
+
+    }
+
+    @Override
+    public void onAnimationEnd(Animator animation) {
+        if (getActivity() != null && getActivity() instanceof MainActivity){
+            ((MainActivity)getActivity()).aroundWorld();
+        }
+    }
+
+    @Override
+    public void onAnimationCancel(Animator animation) {
+
+    }
+
+    @Override
+    public void onAnimationRepeat(Animator animation) {
+
     }
 }

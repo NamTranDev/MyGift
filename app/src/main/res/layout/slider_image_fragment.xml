@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
-        app:texture="@drawable/particle_texture"
-        app:plistFile="@raw/snow"/>
+        app:texture="@drawable/rain_texture"
+        app:plistFile="@raw/rain"/>
 
     <namtran.mygift.library.SliderLayout
         android:id="@+id/slider"

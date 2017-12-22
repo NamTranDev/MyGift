@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/black">
+
+    <namtran.mygift.firework.FireworkView
+        android:id="@+id/snow_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        app:texture="@drawable/particle_texture"
+        app:plistFile="@raw/snow"/>
+
+    <namtran.mygift.htext.fade.FadeTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:id="@+id/tv_intro"/>
+
+    <namtran.mygift.htext.evaporate.EvaporateTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/iv_food"
+        android:gravity="center"
+        android:id="@+id/tv_lead"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"/>
+
+    <namtran.mygift.food.SlideshowImageView
+        android:id="@+id/iv_food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/tv_intro_food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/iv_food"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_planes"
+        android:src="@drawable/planes"
+        android:visibility="gone"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
