@@ -13,6 +13,7 @@ import android.view.View;
 import namtran.mygift.fragment.AroundWorldFragment;
 import namtran.mygift.fragment.FireworkFragment;
 import namtran.mygift.fragment.SliderImageFragment;
+import namtran.mygift.fragment.TextEndFragment;
 import namtran.mygift.fragment.TextFirstFragment;
 
 import static namtran.mygift.TypePosition.AROUND_WORLD;
@@ -25,6 +26,7 @@ import static namtran.mygift.TypePosition.PLANES_AROUND_WORLD;
 import static namtran.mygift.TypePosition.SHOW_SLIDER;
 import static namtran.mygift.TypePosition.SLIDER;
 import static namtran.mygift.TypePosition.TEXT_AROUND_WORLD;
+import static namtran.mygift.TypePosition.TEXT_END;
 import static namtran.mygift.TypePosition.TEXT_FIREWORK;
 
 public class MainActivity extends AppCompatActivity {
@@ -62,14 +64,14 @@ public class MainActivity extends AppCompatActivity {
                         ((SliderImageFragment) fragment).showSlider();
                     }
                     type = TypePosition.BACKGROUND_RAIN;
-                    handler.postDelayed(runnable, 3000);
+                    handler.postDelayed(runnable, 25500);
                     break;
                 case BACKGROUND_RAIN:
                     if (fragment != null && fragment instanceof SliderImageFragment) {
                         ((SliderImageFragment) fragment).setBackgroundSnow();
                     }
                     type = TypePosition.BACKGROUND_FIREWORK;
-                    handler.postDelayed(runnable, 3000);
+                    handler.postDelayed(runnable, 26000);
                     break;
                 case BACKGROUND_FIREWORK:
                     replaceFragment(FireworkFragment.getInstance(), true);
@@ -91,7 +93,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case AROUND_WORLD:
+                    handlerFirework.removeCallbacks(runnableFirework);
                     replaceFragment(AroundWorldFragment.getInstance(), true);
+                    handler.removeCallbacks(this);
                     break;
                 case TEXT_AROUND_WORLD:
                     if (fragment != null && fragment instanceof AroundWorldFragment)
@@ -100,6 +104,11 @@ public class MainActivity extends AppCompatActivity {
                 case PLANES_AROUND_WORLD:
                     if (fragment != null && fragment instanceof AroundWorldFragment)
                         ((AroundWorldFragment)fragment).animationPlanes();
+                    break;
+                case TEXT_END:
+                    if (fragment != null && fragment instanceof TextEndFragment) {
+                        ((TextEndFragment) fragment).setHandler();
+                    }
                     break;
             }
         }
@@ -153,21 +162,31 @@ public class MainActivity extends AppCompatActivity {
 
     public void showIvFirework() {
         type = IMAGE_FIREWORK;
-        handler.postDelayed(runnable, 3000);
+        handler.postDelayed(runnable, 15000);
     }
 
     public void aroundWorld() {
         type = AROUND_WORLD;
-        handler.postDelayed(runnable, 3000);
+        handler.postDelayed(runnable, 2000);
     }
 
     public void textIntroArounWorld() {
         type = TEXT_AROUND_WORLD;
-        handler.postDelayed(runnable, 5000);
+        handler.postDelayed(runnable, 1000);
     }
 
     public void animationPlanes() {
         type = PLANES_AROUND_WORLD;
+        handler.postDelayed(runnable,2000);
+    }
+
+    public void textEnd() {
+        handler.removeCallbacks(runnable);
+        replaceFragment(TextEndFragment.getInstance(),true);
+    }
+
+    public void textEnnAnimatiob() {
+        type = TEXT_END;
         handler.postDelayed(runnable,2000);
     }
 

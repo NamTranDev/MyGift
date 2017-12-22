@@ -15,9 +15,10 @@ import static namtran.mygift.TypePosition.SHOW_SLIDER;
 import static namtran.mygift.TypePosition.SLIDER;
 import static namtran.mygift.TypePosition.INTRO;
 import static namtran.mygift.TypePosition.TEXT_AROUND_WORLD;
+import static namtran.mygift.TypePosition.TEXT_END;
 import static namtran.mygift.TypePosition.TEXT_FIREWORK;
 
-@IntDef({FIRST,INTRO,SLIDER,BACKGROUND_RAIN,SHOW_SLIDER,BACKGROUND_FIREWORK,TEXT_FIREWORK,IMAGE_FIREWORK,AROUND_WORLD,TEXT_AROUND_WORLD,PLANES_AROUND_WORLD})
+@IntDef({FIRST,INTRO,SLIDER,BACKGROUND_RAIN,SHOW_SLIDER,BACKGROUND_FIREWORK,TEXT_FIREWORK,IMAGE_FIREWORK,AROUND_WORLD,TEXT_AROUND_WORLD,PLANES_AROUND_WORLD,TEXT_END})
 @Retention(RetentionPolicy.SOURCE)
 public @interface TypePosition {
     int FIRST = 0;
@@ -31,4 +32,5 @@ public @interface TypePosition {
     int AROUND_WORLD = 8;
     int TEXT_AROUND_WORLD = 9;
     int PLANES_AROUND_WORLD = 10;
+    int TEXT_END = 11;
 }

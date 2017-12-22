@@ -48,7 +48,7 @@ public class SlideshowImageView extends RelativeLayout {
             anim(Math.abs(msg.arg1 - 1));
         }
     };
-    private long duration = Anim.DURATION;
+
     private BaseSlide baseSlide = null;
 
     private OnSlidesListener onSlidesListener;
@@ -143,10 +143,6 @@ public class SlideshowImageView extends RelativeLayout {
         }
     }
 
-    public void setDuration(long duration) {
-        this.duration = duration;
-    }
-
     private void gone(int targetChildIndex) {
         ImageView target = getImageView(targetChildIndex);
 
@@ -195,7 +191,7 @@ public class SlideshowImageView extends RelativeLayout {
         target.setScaleX(Anim.SCALE);
         target.setScaleY(Anim.SCALE);
 
-        int imageIndex = slideshowViewModel.getImageIndex(getCurrentIndex());
+        int imageIndex = slideshowViewModel.getImageIndex();
 
         if (imageIndex > -1) {
             target.setTag(imageIndex);
@@ -203,6 +199,8 @@ public class SlideshowImageView extends RelativeLayout {
 
             baseSlide = slideshowViewModel.getImage(imageIndex);
             target.setImageBitmap(BitmapFactory.decodeResource(getContext().getResources(), baseSlide.getImage()));
+            if (onSlidesListener != null)
+                onSlidesListener.onSlidesListener(baseSlide);
         }else{
             baseSlide = null;
             if (onSlidesListener != null){
@@ -225,6 +223,29 @@ public class SlideshowImageView extends RelativeLayout {
         transY.setDuration(Anim.DURATION);
 
         ObjectAnimator alpha = ObjectAnimator.ofFloat(target, "alpha", 0.0f, 1.0f);
+        alpha.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if (onSlidesListener != null){
+                    onSlidesListener.onSlideComplete();
+                }
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
         alpha.setDuration(Anim.DURATION / 2);
 
         ObjectAnimator alphaAfter = ObjectAnimator.ofFloat(target, "alpha", 1.0f, 0.0f);
@@ -234,19 +255,14 @@ public class SlideshowImageView extends RelativeLayout {
 
         final AnimatorSet animSet = new AnimatorSet();
         animSet.setInterpolator(new AccelerateDecelerateInterpolator());
-        animSet.playTogether(transX, transY, alpha/*, alphaAfter*/);
+        animSet.playTogether(transX, transY, alpha, alphaAfter);
         animSet.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                if (onSlidesListener != null)
-                    onSlidesListener.onSlidesListener(baseSlide);
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                if (onSlidesListener != null){
-                    onSlidesListener.onSlideComplete();
-                }
                 animSet.setTarget(null);
                 animSet.removeListener(this);
             }
@@ -266,7 +282,7 @@ public class SlideshowImageView extends RelativeLayout {
         Message message = new Message();
         message.what = 1;
         message.arg1 = targetChildIndex;
-        loopHandler.sendMessageDelayed(message, duration);
+        loopHandler.sendMessageDelayed(message, Anim.DURATION / 2);
     }
 
 

@@ -69,18 +69,21 @@ public class FireworkFragment extends Fragment implements Animator.AnimatorListe
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        ViewTreeObserver observer = iv.getViewTreeObserver();
         random = new Random();
         createExplosionList();
         InvalidateThread invalidate = new InvalidateThread(firework);
         invalidate.start();
         showFirework();
         textDisplay+=text[position];
-        animationText();
-        if (getActivity() != null && getActivity() instanceof MainActivity){
-            ((MainActivity)getActivity()).textFireWork();
-        }
+        tv_display.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                tv_display.animateText(textDisplay);
+                if (getActivity() != null && getActivity() instanceof MainActivity){
+                    ((MainActivity)getActivity()).textFireWork();
+                }
+            }
+        },1000);
     }
 
     private void createExplosionList() {
@@ -122,10 +125,6 @@ public class FireworkFragment extends Fragment implements Animator.AnimatorListe
         Log.d("touch","y : " + y);
         Log.d("touch","x : " + x);
         firework.invalidate();
-    }
-
-    private void animationText(){
-        tv_display.animateText(textDisplay);
     }
 
     private void setText(){

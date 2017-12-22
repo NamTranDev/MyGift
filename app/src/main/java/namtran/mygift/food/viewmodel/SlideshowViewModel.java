@@ -1,9 +1,5 @@
 package namtran.mygift.food.viewmodel;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -64,26 +60,11 @@ public class SlideshowViewModel {
      *
      * @return
      */
-    public int getImageIndex(List<Integer> curIndex) {
-        position ++;
-        List<Integer> candi = new ArrayList<>();
-
-        for (int i = 0; i < images.size(); i++) {
-            if (!curIndex.contains(i)) {
-                candi.add(i);
-            }
-        }
-
-        if (candi.size() == 0) {
-            return -1;
-        } else if (candi.size() == 1) {
-            return candi.get(0);
-        } else {
-
-            if (position < candi.size() - 1)
-                return candi.get(position);
-            return -1;
-        }
+    public int getImageIndex() {
+        position++;
+        if (position < images.size())
+            return position;
+        return  -1;
     }
 
     public BaseSlide getImage(/*Context context, */int imageIndex){

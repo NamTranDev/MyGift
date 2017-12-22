@@ -38,7 +38,7 @@ public class SliderImageFragment extends Fragment implements ViewPagerEx.OnPageC
         backgroundSnow = view.findViewById(R.id.snow_background);
 
         slider.setPresetTransformer(SliderLayout.Transformer.Default);
-        slider.setDuration(6000);
+        slider.setDuration(4000);
         slider.addOnPageChangeListener(this);
         return view;
     }
@@ -73,6 +73,8 @@ public class SliderImageFragment extends Fragment implements ViewPagerEx.OnPageC
         data.put("Thời trẻ trâu của ai đó +_=", R.drawable.r);
         data.put("Lúc nào cũng chu mỏ cả 0.0", R.drawable.f);
         data.put("Cũng lại bụm môi nhìn muốn cắn thật *,*", R.drawable.t);
+        data.put("Làm ninja à ==", R.drawable.w);
+        data.put("Vẫn một kiểu chu môi cũ o.o", R.drawable.q);
 
         for(String name : data.keySet()){
             Slider textSliderView = new Slider(getActivity());

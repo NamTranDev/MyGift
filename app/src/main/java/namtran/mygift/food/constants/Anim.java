@@ -17,5 +17,5 @@ package namtran.mygift.food.constants;
  */
 public class Anim {
     public static final float SCALE = 1.25f;
-    public static final long DURATION = 20 * 1000;
+    public static final long DURATION = 30 * 1000;
 }
