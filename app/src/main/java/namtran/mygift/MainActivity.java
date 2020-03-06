@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     type = INTRO;
                     break;
                 case INTRO:
-                    if (fragment != null && fragment instanceof TextFirstFragment) {
+                    if (fragment instanceof TextFirstFragment) {
                         ((TextFirstFragment) fragment).setHandler();
                     }
                     break;
@@ -60,25 +60,25 @@ public class MainActivity extends AppCompatActivity {
                     handler.postDelayed(runnable, 2000);
                     break;
                 case SHOW_SLIDER:
-                    if (fragment != null && fragment instanceof SliderImageFragment) {
+                    if (fragment instanceof SliderImageFragment) {
                         ((SliderImageFragment) fragment).showSlider();
                     }
                     type = TypePosition.BACKGROUND_RAIN;
-                    handler.postDelayed(runnable, 25500);
+                    handler.postDelayed(runnable, 12250);
                     break;
                 case BACKGROUND_RAIN:
-                    if (fragment != null && fragment instanceof SliderImageFragment) {
+                    if (fragment instanceof SliderImageFragment) {
                         ((SliderImageFragment) fragment).setBackgroundSnow();
                     }
                     type = TypePosition.BACKGROUND_FIREWORK;
-                    handler.postDelayed(runnable, 26000);
+                    handler.postDelayed(runnable, 16000);
                     break;
                 case BACKGROUND_FIREWORK:
                     replaceFragment(FireworkFragment.getInstance(), true);
                     type = TypePosition.TEXT_FIREWORK;
                     break;
                 case TEXT_FIREWORK:
-                    if (fragment != null && fragment instanceof FireworkFragment) {
+                    if (fragment instanceof FireworkFragment) {
                         ((FireworkFragment) fragment).setHandler();
                         textFireWork();
                         if (!isShowFirework) {
@@ -88,25 +88,30 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case IMAGE_FIREWORK:
-                    if (fragment != null && fragment instanceof FireworkFragment) {
+                    if (fragment instanceof FireworkFragment) {
                         ((FireworkFragment) fragment).showImage();
                     }
                     break;
                 case AROUND_WORLD:
                     handlerFirework.removeCallbacks(runnableFirework);
-                    replaceFragment(AroundWorldFragment.getInstance(), true);
-                    handler.removeCallbacks(this);
+                    findViewById(R.id.contain_main).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            replaceFragment(AroundWorldFragment.getInstance(), true);
+                            handler.removeCallbacks(this);
+                        }
+                    });
                     break;
                 case TEXT_AROUND_WORLD:
-                    if (fragment != null && fragment instanceof AroundWorldFragment)
+                    if (fragment instanceof AroundWorldFragment)
                         ((AroundWorldFragment)fragment).setHander();
                     break;
                 case PLANES_AROUND_WORLD:
-                    if (fragment != null && fragment instanceof AroundWorldFragment)
+                    if (fragment instanceof AroundWorldFragment)
                         ((AroundWorldFragment)fragment).animationPlanes();
                     break;
                 case TEXT_END:
-                    if (fragment != null && fragment instanceof TextEndFragment) {
+                    if (fragment instanceof TextEndFragment) {
                         ((TextEndFragment) fragment).setHandler();
                     }
                     break;
@@ -118,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
             Fragment fragment = getFragmentManager().findFragmentById(R.id.contain_main);
-            if (fragment != null && fragment instanceof FireworkFragment) {
+            if (fragment instanceof FireworkFragment) {
                 ((FireworkFragment) fragment).showFirework();
                 handlerFirework.postDelayed(runnableFirework, 2000);
             }
@@ -142,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         assert mAudioManager != null;
         mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
 
-        mPlayer = MediaPlayer.create(this, R.raw.love_you_and_love_me);
+        mPlayer = MediaPlayer.create(this, R.raw.chac_ai_do_se_ve);
         mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
     }
 

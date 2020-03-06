@@ -25,9 +25,9 @@ public class TextEndFragment extends Fragment implements Animator.AnimatorListen
 
     private int position = 0;
     String[] endText = new String[]{
-            "Món quà nhỏ gửi đến chị",
-            "Mong rằng nó sẽ làm cho chị vui",
-            "Bởi vì chị vui thì tui cũng sẽ vui",
+            "Món quà nhỏ gửi đến em",
+            "Mong rằng nó sẽ làm cho em vui",
+            "Bởi vì em vui thì anh cũng sẽ vui",
             "Ahihi ^^!",
     };
 

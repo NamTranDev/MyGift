@@ -38,7 +38,7 @@ public class SliderImageFragment extends Fragment implements ViewPagerEx.OnPageC
         backgroundSnow = view.findViewById(R.id.snow_background);
 
         slider.setPresetTransformer(SliderLayout.Transformer.Default);
-        slider.setDuration(4000);
+        slider.setDuration(4100);
         slider.addOnPageChangeListener(this);
         return view;
     }
@@ -62,19 +62,13 @@ public class SliderImageFragment extends Fragment implements ViewPagerEx.OnPageC
 
     private void addImage(){
         Map<String,Integer> data = new ArrayMap<>();
-        data.put("Đang nhát ma đó hả :))))))",R.drawable.a);
-        data.put("Thích làm mèo nhỉ @,@",R.drawable.b);
-        data.put("Cái mỏ sao chu được hay thế >\"<",R.drawable.c);
-        data.put("Cô gái nghiêm túc của năm à =]]]]]z", R.drawable.d);
-        data.put("Cô mèo này đáng yêu thế nhể <3", R.drawable.e);
-        data.put("Có 360 hok mà sao trắng sáng thế ~.~", R.drawable.l);
-        data.put("Lại chu môi ^,^", R.drawable.n);
-        data.put("Chân ải chân ai =,=", R.drawable.p);
-        data.put("Thời trẻ trâu của ai đó +_=", R.drawable.r);
-        data.put("Lúc nào cũng chu mỏ cả 0.0", R.drawable.f);
-        data.put("Cũng lại bụm môi nhìn muốn cắn thật *,*", R.drawable.t);
-        data.put("Làm ninja à ==", R.drawable.w);
-        data.put("Vẫn một kiểu chu môi cũ o.o", R.drawable.q);
+        data.put("Mặt béo thế nhở :))",R.drawable.a);
+        data.put("Nụ cười tỏa nắng hen",R.drawable.b);
+        data.put("Chân dài như siêu mẫu ý ^^!",R.drawable.c);
+        data.put("Nữ tánh dữ thần :))", R.drawable.d);
+        data.put("Nắng quáaaaa ...", R.drawable.e);
+        data.put("Tốt nghiệp gồi sướng quá :))", R.drawable.f);
+        data.put("Chắc đang suy nghĩ về anh nào đấy ...", R.drawable.g);
 
         for(String name : data.keySet()){
             Slider textSliderView = new Slider(getActivity());
@@ -114,7 +108,7 @@ public class SliderImageFragment extends Fragment implements ViewPagerEx.OnPageC
 
     @Override
     public void onPageSelected(int position) {
-        String animation = SliderLayout.Transformer.values()[new Random().nextInt(13)].toString();
+        String animation = SliderLayout.Transformer.values()[new Random().nextInt(7)].toString();
         slider.setPresetTransformer(animation);
     }
 

@@ -23,12 +23,11 @@ public class TextFirstFragment extends Fragment {
 
     private int position = 0;
     String[] firstText = new String[]{
-            "Hi BÀ CỤ NON :))",
-            "Món quà nhỏ gửi tặng chị",
-            "Chúc chị một mùa giáng sinh",
+            "Hi em ^^!",
+            "Món quà nhỏ tặng em",
+            "Chúc em một ngày 8/3",
             "Luôn hạnh phúc và vui vẻ ^^!",
-            "Đặc biệt : Bớt suy nghĩ nhiều đi",
-            "Bắt đầu nào !!!"
+            "Let go !!!"
     };
 
     public static TextFirstFragment getInstance(){
@@ -55,6 +54,7 @@ public class TextFirstFragment extends Fragment {
                 }
             }
         });
+        tv_first_animation.setTyperSpeed(75);
 
         animationFirstText();
     }

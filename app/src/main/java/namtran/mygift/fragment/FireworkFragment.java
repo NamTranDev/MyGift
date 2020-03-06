@@ -46,9 +46,9 @@ public class FireworkFragment extends Fragment implements Animator.AnimatorListe
     private int position = 0;
     String textDisplay = "";
     String[] text = new String[]{
-            "MERRY CHRISTMAS",
-            "AND",
-            "HAPPY NEW YEAR",
+            "CHÚC MỪNG",
+            "QUỐC TẾ",
+            "PHỤ NỮ - 8/3",
             "^^!",
     };
 

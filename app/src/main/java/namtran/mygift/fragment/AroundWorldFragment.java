@@ -42,9 +42,9 @@ public class AroundWorldFragment extends Fragment implements Animator.AnimatorLi
 
     private int position = 0;
     String[] text = new String[]{
-            "Chị thích đồ ăn đúng hơm ???",
-            "Vậy bây giờ chúng ta sẽ ",
-            "Cùng đi vòng quanh thế giới",
+            "Tiếp theo",
+            "Anh sẽ dẫn em đi",
+            "Vòng quanh thế giới",
             "Để thưởng thức đồ ăn ha",
             "Rồi thắt chặt dây an toàn",
             "Chúng ta bay nào :))))"
@@ -96,7 +96,7 @@ public class AroundWorldFragment extends Fragment implements Animator.AnimatorLi
 
         List<String> d = new ArrayList<>();
         d.add("Đi qua Mỹ thoy");
-        d.add("Bánh rán vòng Doughnut - oại bánh này là một sự kết hợp đầy bí ẩn, bao gồm 1 lạng thịt muối, bơ đặt giữa hai nửa chiếc bánh rán vòng" +
+        d.add("Bánh rán vòng Doughnut - loại bánh này là một sự kết hợp đầy bí ẩn, bao gồm 1 lạng thịt muối, bơ đặt giữa hai nửa chiếc bánh rán vòng" +
                 " bọc đường ngọt ngào. Bánh được bán nhiều ở Portland, Oregon");
         data.add(new Food(R.drawable.banh_ran_vong_doughnut,d));
 
@@ -121,16 +121,16 @@ public class AroundWorldFragment extends Fragment implements Animator.AnimatorLi
 
         List<String> m = new ArrayList<>();
         m.add("Qua Singapore nghen ^^!");
-        m.add("Các món cơm gà, mỳ laska, thịt xiên nướng satay . Ngoài ra các quàn ăn ở đây còn hàng chục món khác để chị lựa chọn nữa :))");
+        m.add("Các món cơm gà, mỳ laska, thịt xiên nướng satay . Ngoài ra các quàn ăn ở đây còn hàng chục món khác để em lựa chọn nữa :))");
         data.add(new Food(R.drawable.com_ga,m));
 
         List<String> n = new ArrayList<>();
         n.add("Giờ qua Cuba ăn cơm trộn thoy >\"<");
-        n.add("Đến Havana, chị đừng bỏ qua món cơm trộn với đậu đen, thịt gà và rau");
+        n.add("Đến Havana, em đừng bỏ qua món cơm trộn với đậu đen, thịt gà và rau");
         data.add(new Food(R.drawable.com_tron,n));
 
         List<String> o = new ArrayList<>();
-        o.add("Giờ qua Tây Ban Nha ăn nhóe ^^!");
+        o.add("Giờ qua Tây Ban Nha ăn hé ^^!");
         o.add("Món Cơm trộn thập cẩm Paella \n Món ăn được pha trộn từ cơm, hải sản, xúc xích và màu vàng của nghệ");
         data.add(new Food(R.drawable.com_tron_thap_cam,o));
 
@@ -201,7 +201,7 @@ public class AroundWorldFragment extends Fragment implements Animator.AnimatorLi
 
     @Override
     public void onSlidesListener(BaseSlide baseSlide) {
-        if (baseSlide != null && baseSlide instanceof Food){
+        if (baseSlide instanceof Food){
 //            Toast.makeText(getActivity(),((Food)baseSlide).getIntro().get(0),Toast.LENGTH_SHORT).show();
             final List<String> data = ((Food)baseSlide).getIntro();
             tv_lead.setVisibility(View.VISIBLE);
@@ -230,5 +230,17 @@ public class AroundWorldFragment extends Fragment implements Animator.AnimatorLi
         if (getActivity() != null && getActivity() instanceof MainActivity){
             ((MainActivity)getActivity()).textEnd();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        set.resume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        set.pause();
     }
 }
